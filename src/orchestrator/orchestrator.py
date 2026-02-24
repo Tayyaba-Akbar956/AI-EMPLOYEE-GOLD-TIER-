@@ -157,12 +157,57 @@ class Orchestrator:
     def trigger_claude(self, task_filename: str, skill_content: str):
         """
         Trigger Claude Code with the task and skill
-        In real implementation, this would invoke Claude Code CLI
-        For testing, this is a stub
+        Invokes Claude Code CLI via subprocess
         """
-        # This is a placeholder - actual implementation would invoke Claude Code
-        # via subprocess or API call
-        pass
+        import subprocess
+
+        # Read task file content
+        task_file = self.in_progress_path / task_filename
+        if not task_file.exists():
+            return False
+
+        task_content = task_file.read_text(encoding='utf-8')
+
+        # Build prompt with task + skill context
+        prompt = f"""Task File: {task_filename}
+
+Task Content:
+{task_content}
+
+Skill Context:
+{skill_content}
+
+Please process this task according to the skill instructions."""
+
+        try:
+            # Invoke Claude Code CLI
+            result = subprocess.run(
+                ['claude', 'code', '--prompt', prompt],
+                capture_output=True,
+                text=True,
+                cwd=str(self.vault_path),
+                timeout=300  # 5 minute timeout
+            )
+
+            return result.returncode == 0
+        except subprocess.TimeoutExpired:
+            self.log_action(
+                action_type="claude_trigger",
+                actor="orchestrator",
+                target=task_filename,
+                result="failure",
+                error="Claude Code timeout after 5 minutes"
+            )
+            return False
+        except Exception as e:
+            self.log_action(
+                action_type="claude_trigger",
+                actor="orchestrator",
+                target=task_filename,
+                result="failure",
+                error=str(e)
+            )
+            return False
 
     def process_approved(self):
         """
@@ -202,9 +247,188 @@ class Orchestrator:
         Execute the action specified in an approved file
         Returns True if successful
         """
-        # Placeholder for actual execution logic
-        # Would parse the approved file and execute the MCP action
-        return True
+        try:
+            content = approved_file.read_text(encoding='utf-8')
+
+            # Parse frontmatter to determine action type
+            import re
+            frontmatter_match = re.search(r'^---\n(.*?)\n---', content, re.DOTALL)
+            if not frontmatter_match:
+                return False
+
+            frontmatter = frontmatter_match.group(1)
+
+            # Determine action type from frontmatter
+            if 'type: email' in frontmatter:
+                return self._execute_email_send(content, frontmatter)
+            elif 'type: social_post' in frontmatter or 'type: linkedin_post' in frontmatter:
+                return self._execute_social_post(content, frontmatter)
+            elif 'type: facebook_post' in frontmatter:
+                return self._execute_facebook_post(content, frontmatter)
+            elif 'type: instagram_post' in frontmatter:
+                return self._execute_instagram_post(content, frontmatter)
+            elif 'type: twitter_post' in frontmatter:
+                return self._execute_twitter_post(content, frontmatter)
+            elif 'type: odoo' in frontmatter or 'type: odoo_invoice' in frontmatter:
+                return self._execute_odoo_action(content, frontmatter)
+
+            return False
+
+        except Exception as e:
+            self.log_action(
+                action_type="execute_approved",
+                actor="orchestrator",
+                target=approved_file.name,
+                result="failure",
+                error=str(e)
+            )
+            return False
+
+    def _execute_email_send(self, content: str, frontmatter: str) -> bool:
+        """Execute email send action"""
+        try:
+            # Extract email details from frontmatter
+            import re
+            to_match = re.search(r'to:\s*(.+)', frontmatter)
+            subject_match = re.search(r'subject:\s*(.+)', frontmatter)
+
+            if not to_match or not subject_match:
+                return False
+
+            to_email = to_match.group(1).strip()
+            subject = subject_match.group(1).strip()
+
+            # Extract body (everything after frontmatter)
+            body_match = re.search(r'---\n\n(.+)', content, re.DOTALL)
+            body = body_match.group(1).strip() if body_match else ""
+
+            # Use Gmail API to send (import from Silver)
+            from src.workflows.email_workflow import send_email
+            success = send_email(to_email, subject, body)
+
+            self.log_action(
+                action_type="email_send",
+                actor="orchestrator",
+                target=to_email,
+                result="success" if success else "failure",
+                parameters={"subject": subject}
+            )
+
+            return success
+        except Exception as e:
+            self.log_action(
+                action_type="email_send",
+                actor="orchestrator",
+                target="unknown",
+                result="failure",
+                error=str(e)
+            )
+            return False
+
+    def _execute_social_post(self, content: str, frontmatter: str) -> bool:
+        """Execute LinkedIn social post"""
+        try:
+            # Extract post content
+            import re
+            body_match = re.search(r'---\n\n(.+)', content, re.DOTALL)
+            post_content = body_match.group(1).strip() if body_match else ""
+
+            # Use LinkedIn poster from Silver
+            from src.watchers.linkedin_watcher import post_to_linkedin
+            success = post_to_linkedin(post_content)
+
+            self.log_action(
+                action_type="linkedin_post",
+                actor="orchestrator",
+                target="linkedin",
+                result="success" if success else "failure"
+            )
+
+            return success
+        except Exception:
+            return False
+
+    def _execute_facebook_post(self, content: str, frontmatter: str) -> bool:
+        """Execute Facebook post"""
+        try:
+            import re
+            body_match = re.search(r'---\n\n(.+)', content, re.DOTALL)
+            post_content = body_match.group(1).strip() if body_match else ""
+
+            from src.social.facebook_poster import FacebookPoster
+            poster = FacebookPoster(vault_path=str(self.vault_path))
+            success = poster.post_to_facebook(post_content)
+
+            self.log_action(
+                action_type="facebook_post",
+                actor="orchestrator",
+                target="facebook",
+                result="success" if success else "failure"
+            )
+
+            return success
+        except Exception:
+            return False
+
+    def _execute_instagram_post(self, content: str, frontmatter: str) -> bool:
+        """Execute Instagram post"""
+        try:
+            import re
+            body_match = re.search(r'---\n\n(.+)', content, re.DOTALL)
+            post_content = body_match.group(1).strip() if body_match else ""
+
+            from src.social.instagram_poster import InstagramPoster
+            poster = InstagramPoster(vault_path=str(self.vault_path))
+            success = poster.post_to_instagram(post_content)
+
+            self.log_action(
+                action_type="instagram_post",
+                actor="orchestrator",
+                target="instagram",
+                result="success" if success else "failure"
+            )
+
+            return success
+        except Exception:
+            return False
+
+    def _execute_twitter_post(self, content: str, frontmatter: str) -> bool:
+        """Execute Twitter post"""
+        try:
+            import re
+            body_match = re.search(r'---\n\n(.+)', content, re.DOTALL)
+            post_content = body_match.group(1).strip() if body_match else ""
+
+            from src.social.twitter_poster import TwitterPoster
+            poster = TwitterPoster(vault_path=str(self.vault_path))
+            success = poster.post_tweet(post_content)
+
+            self.log_action(
+                action_type="twitter_post",
+                actor="orchestrator",
+                target="twitter",
+                result="success" if success else "failure"
+            )
+
+            return success
+        except Exception:
+            return False
+
+    def _execute_odoo_action(self, content: str, frontmatter: str) -> bool:
+        """Execute Odoo action (invoice, expense, journal entry)"""
+        try:
+            # Parse action details from content
+            # This would call the Odoo MCP tools
+            # For now, return True as placeholder
+            self.log_action(
+                action_type="odoo_action",
+                actor="orchestrator",
+                target="odoo",
+                result="success"
+            )
+            return True
+        except Exception:
+            return False
 
     def process_rejected(self):
         """

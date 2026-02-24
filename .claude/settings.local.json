@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pytest:*)",
+      "Bash(python:*)",
+      "Bash(sqlite3:*)",
+      "Skill(ralph-loop:ralph-loop)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(grep:*)",
+      "Bash(test:*)",
+      "Bash(git add:*)",
+      "Bash(git init:*)",
+      "Bash(git remote:*)"
+    ]
+  },
+  "enabledPlugins": {
+    "ralph-loop@claude-plugins-official": true
+  }
+}

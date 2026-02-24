@@ -1,0 +1,17 @@
+{
+  "name": "ai-employee-whatsapp-watcher",
+  "version": "1.0.0",
+  "description": "WhatsApp watcher for AI Employee Silver Tier",
+  "main": "whatsapp_watcher.js",
+  "scripts": {
+    "start": "node whatsapp_watcher.js",
+    "test": "node test_connection.js"
+  },
+  "dependencies": {
+    "whatsapp-web.js": "^1.23.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

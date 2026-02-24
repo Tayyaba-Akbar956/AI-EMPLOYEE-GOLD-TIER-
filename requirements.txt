@@ -1,0 +1,22 @@
+# Core dependencies
+anthropic>=0.25.0
+PyYAML>=6.0
+
+# Gmail watcher (if using Gmail)
+google-api-python-client>=2.0.0
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=0.5.0
+
+# Filesystem watcher (if using filesystem)
+watchdog>=3.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+psutil>=5.9.0
+
+# LinkedIn automation
+playwright>=1.40.0

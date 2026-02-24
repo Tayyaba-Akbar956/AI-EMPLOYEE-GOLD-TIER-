@@ -1,0 +1,226 @@
+{
+  "main": {
+    "id": "1243aa28e3b60b0e",
+    "type": "split",
+    "children": [
+      {
+        "id": "470b5dcf4acabb9c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f691516f5de4f5da",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dashboard.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Dashboard"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "57dad34c65a82a16",
+    "type": "split",
+    "children": [
+      {
+        "id": "1dea339b44edee32",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "efb1475ad6c035e3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "0643b94993f29a9d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "bdd6b49f6a450d5e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "cfd6ba59a74789c3",
+    "type": "split",
+    "children": [
+      {
+        "id": "d22eb5d521065c29",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d6f3ae3474ed46ab",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Dashboard.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Dashboard"
+            }
+          },
+          {
+            "id": "cf6587e87cece8b6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Dashboard.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Dashboard"
+            }
+          },
+          {
+            "id": "8cf7bf267d593bb1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "b182d8c44d10bafd",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "66b332ae019bac8f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Dashboard.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Dashboard"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "efb1475ad6c035e3",
+  "lastOpenFiles": [
+    "Logs/linkedin_posts",
+    "Approved/linkedin_posts",
+    "Pending_Approval/linkedin_posts",
+    "Done/2026-02-10_email_Google_Finish-setting-up-your-new-Google-Accou.md",
+    "Done/2026-02-10_email_Google Antigravity_Get-started-with-Google-Antigravity.md",
+    "Needs_Action/normal/2026-02-10_email_Google Play_Your-new-privacy-settings-on-Play.md",
+    "Needs_Action/normal/2026-02-13_email_ChatGPT_Some-handy-ideas-for-you.md",
+    "Needs_Action/urgent/2026-02-15_email_Tayyaba Akbar_Invoice-of-abc-company.md",
+    "Needs_Action/normal/2026-02-16_document_class-4-Urdu-work-final-term.pdf",
+    "Needs_Action/normal/2026-02-16_document_class-4-Urdu-work-final-term.md",
+    "Needs_Action/normal/2026-02-16_document_FTE_Exam_Practice.pdf",
+    "Needs_Action/normal/2026-02-16_document_FTE_Exam_Practice.md",
+    "Inbox/files/2026-02-16_document_Gemini_Generated_Image_shaojmshaojmshao.png",
+    "Inbox/files/2026-02-16_document_Gemini_Generated_Image_shaojmshaojmshao.md",
+    "Inbox/files/2026-02-16_document_README.md",
+    "2026-02-15.md",
+    "Untitled.canvas",
+    "Dashboard.md",
+    "Inbox/files/2026-02-16_document_Purple-Minimalist-Brush-Personal-LinkedIn-Banner-4.png",
+    "Inbox/files/2026-02-16_document_Purple-Minimalist-Brush-Personal-LinkedIn-Banner-4.md",
+    "Logs/2026-02-16.log",
+    "Needs_Action/normal/2026-02-16_document_Markdown-to-PDF.pdf",
+    "Needs_Action/normal/2026-02-16_document_Markdown-to-PDF.md",
+    "Inbox/files/2026-02-15_document_exam.png",
+    "Inbox/files/2026-02-15_document_exam.md",
+    "Needs_Action/urgent/2026-02-15_invoice_invoice_test_dashboard.txt",
+    "Needs_Action/urgent/2026-02-15_invoice_invoice_test_dashboard.md",
+    "Needs_Action/normal/2026-02-15_document_class-4-Urdu-work-final-term-1.pdf",
+    "Needs_Action/normal/2026-02-15_document_class-4-Urdu-work-final-term-1.md",
+    "Needs_Action/normal/2026-02-15_document_CERTIFICATE018000.pdf",
+    "Needs_Action/normal/2026-02-15_document_CERTIFICATE018000.md",
+    "Inbox/files/2026-02-15_document_General-Agents.md",
+    "Needs_Action/normal/2026-02-15_document_CS101-Introduction-to-Computing-Handouts.pdf",
+    "Needs_Action/normal/2026-02-15_document_CS101-Introduction-to-Computing-Handouts.md",
+    "Inbox/files/2026-02-15_document_9router.png",
+    "Inbox/files/2026-02-15_document_9router.md",
+    "Needs_Action/normal/2026-02-15_document_CERTIFICATE258000-1.md"
+  ]
+}

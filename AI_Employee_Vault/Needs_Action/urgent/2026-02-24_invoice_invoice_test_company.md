@@ -14,10 +14,10 @@
 Binary pdf file - no text preview available.
 
 ## Metadata
-- **Original Path:** C:\Users\tayyaba\AppData\Local\Temp\pytest-of-tayyaba\pytest-43\test_organize_file_complete0\invoice_test_company.pdf
+- **Original Path:** C:\Users\tayyaba\AppData\Local\Temp\pytest-of-tayyaba\pytest-47\test_organize_file_complete0\invoice_test_company.pdf
 - **Extension:** .pdf
-- **Created:** 2026-02-24T14:08:02.783876
-- **Modified:** 2026-02-24T14:08:02.783876
+- **Created:** 2026-02-24T14:32:40.587358
+- **Modified:** 2026-02-24T14:32:40.587358
 - **MIME Type:** application/pdf
 
 ## Actions Needed
@@ -27,8 +27,8 @@ Binary pdf file - no text preview available.
 - [ ] Update accounting records
 
 ## File Location
-- **Original:** `C:\Users\tayyaba\AppData\Local\Temp\pytest-of-tayyaba\pytest-43\test_organize_file_complete0\invoice_test_company.pdf`
+- **Original:** `C:\Users\tayyaba\AppData\Local\Temp\pytest-of-tayyaba\pytest-47\test_organize_file_complete0\invoice_test_company.pdf`
 - **Vault:** `AI_Employee_Vault/Needs_Action/urgent/2026-02-24_invoice_invoice_test_company.pdf`
 
 ---
-*Organized by file-organizer skill at 2026-02-24T14:08:02.785617*
+*Organized by file-organizer skill at 2026-02-24T14:32:40.675251*

@@ -13,7 +13,9 @@
       "Bash(test:*)",
       "Bash(git add:*)",
       "Bash(git init:*)",
-      "Bash(git remote:*)"
+      "Bash(git remote:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch -M main && git push -u origin main 2>&1)"
     ]
   },
   "enabledPlugins": {
